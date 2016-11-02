@@ -5,15 +5,18 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
-
+pthread_mutex_t mutex;
 int a = 0;
 
 void* thr_run(void* arg){
+    pthread_mutex_lock(&mutex);
     ++a;
+    pthread_mutex_unlock(&mutex);
     return (void*)0;
 }
 
 int main() {
+    pthread_mutex_init(&mutex,NULL);
     int count = 10000;
     pthread_t ts[count];
     for (int i = 0; i < count; ++i) {

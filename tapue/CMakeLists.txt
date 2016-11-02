@@ -8,4 +8,3 @@ add_subdirectory(thread)
 
 include_directories(.)
 include_directories(signal)
-
