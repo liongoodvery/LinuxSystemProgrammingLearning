@@ -20,7 +20,7 @@ long fibonacci(int fibo) {
 void *thr_fn(void *args) {
     int a = 0;
     int b = 1;
-    long arr[1<<16] ;
+    long arr[1<<16] ;//alloc more than 64k on stack
     printf("ret = %d\n", fibonacci(20));
     return (void *) 0;
 }
@@ -39,7 +39,7 @@ int main() {
     printf("size=0x%x\n", size);
 
 
-    pthread_attr_setstacksize(&attr, 1024*64);
+    pthread_attr_setstacksize(&attr, 1024*64);//64k
 
     pthread_attr_getstacksize(&attr, &size);
     printf("size=0x%x\n", size);
