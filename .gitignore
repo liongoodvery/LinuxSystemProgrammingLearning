@@ -33,3 +33,4 @@
 *.su
 .idea/
 *.iml
+*.tmp
